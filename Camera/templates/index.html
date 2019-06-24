@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Surveillance Robotic Car</title>
+  <link rel="icon" type="image/jpg" href="webcam.jpg">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid bg-primary p-4">
+	<h2 class="text-center text-white">Surveillance Dashboard</h2> 
+</div>
+<br>
+<div class="container">
+  <div class="row">
+	<div class="col-md-7">         
+  		<img src="{{ url_for('calc') }}" class="img-thumbnail" alt="live_footage" width="720" height="540">
+	</div>
+	<div class="col-md-1">
+	</div>
+	<div class="col-md-4">
+		
+		<div class="shadow-sm p-4 mb-4 bg-white img-thumbnail">
+			<table class="table table-borderless">
+			  <tr>
+				<td colspan="2" class="text-center"><button class="btn btn-primary" id="up"><i class="fas fa-angle-double-up"></i>&nbsp;Front</button></td>
+			  </tr>
+			  <tr>
+				<td><button class="btn btn-primary" id="left"><i class="fas fa-angle-double-left"></i>&nbsp;Left</button></td>
+				<td class="d-flex justify-content-end"><button class="btn btn-primary" id="right">Right&nbsp;<i class="fas fa-angle-double-right"></i></button></td>
+			  </tr>
+			  <tr>
+				<td colspan="2" class="text-center"><button class="btn btn-primary" id="down"><i class="fas fa-angle-double-down"></i>&nbsp;Back</button></td>
+			  </tr>
+			</table>
+		</div>
+	</div>
+  </div>
+   
+</div>
+
+<script>
+$( document ).ready(function(){
+    $("#down").on("mousedown", function() {
+     $.get('/down_side');
+     }).on('mouseup', function() {
+     $.get('/stop');
+    });
+    $("#up").on("mousedown", function() {
+     $.get('/up_side');
+     }).on('mouseup', function() {
+     $.get('/stop');
+    });
+    $("#left").on("mousedown", function() {
+     $.get('/left_side');
+     }).on('mouseup', function() {
+     $.get('/stop');
+    });
+    $("#right").on("mousedown", function() {
+     $.get('/right_side');
+     }).on('mouseup', function() {
+     $.get('/stop');
+    });
+});
+</script>
+</body>
+</html>
