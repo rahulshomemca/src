@@ -93,4 +93,4 @@ def stop():
 
 
 if __name__ == '__main__':
-    app.run(host='192.168.43.53', debug=True, threaded=True)
+    app.run(host='x.x.x.x', debug=True, threaded=True)
